@@ -1,0 +1,70 @@
+<style>
+		
+ #head{
+	float: left;	
+		 width:600px;
+		 height: 600px;
+				 
+	} 
+ .header{
+		 width: 500px;
+		 height: 480px;
+		text-align: center;
+		margin-left: 30%;
+		background-color: gray;
+	}
+		.center{
+			 width: 500px;
+			 height: 333px;
+			 background-color: gray;
+			 margin-left: 30%;
+		 }
+		 #input{
+			 width: 70%;
+			 height: 35px;
+			 /* margin-top: 5px; */
+			 border-radius: 5px;
+			 border: 2px solid black;
+			 padding-left: 3px;
+		 }
+		 #input1{
+			 width: 30%;
+			 height: 25px;
+			 /* margin-top:5px; */
+			 padding-left:3px;
+			 border-radius: 5px;
+			 border: 2px solid gray;
+		 }
+		 .centerone{
+			 height: 90px;
+			 width: 500px;
+			 /* background-color:darkgray; */
+			 float: left;
+			 
+		 }
+		 .formone{
+		 		 border: 1px solid gray;
+		 		 border-radius: 4px;
+		 		 width: 70px;
+		 }
+		 #button{
+			 width: 100%;
+			 height: 2rem;
+			 border: none;
+			 font-size: 1.5rem;
+			 background-color:cadetblue; 
+			 color: #fff;
+			 border-radius: 3px;
+			 margin-bottom: 1rem;
+			 margin-top: 30px;
+		 }
+		 #button1{
+			 width: 18%;
+			 height: 25px;
+			 /* margin-top: 5px; */
+			 padding-left:3px;
+			 border-radius: 5px;
+			 border: 1px solid gray;
+			 /* cursor: pointer; */
+		 }
+		    </style>

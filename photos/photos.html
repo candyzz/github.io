@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		* {
+			margin: 0;
+		}
+
+		img {
+			transition-duration: 0.5s;
+		}
+
+		img:hover {
+			-webkit-box-shadow: black 0px 10px 10px;
+			-moz-box-shadow: black 0px 100px 10px;
+			box-shadow: black 0px 10px 10px;
+		}
+
+		#head {
+			height: 700px;
+			width: 100%;
+			/* background-color: aqua; */
+			background: linear-gradient(to right, #57c6e1 0%, #7ac5d8 20%,
+					#b49fda 40%, #bbc1bf 70%, #b49fda 100%);
+			position: relative;
+
+		}
+
+		#center {
+			position: absolute;
+			height: 630px;
+			width: 1000px;
+			border: 2px steelblue solid;
+			border-radius: 4%;
+			margin-left: 16%;
+			/* margin-top: 40px; */
+			/* background-color: white; */
+			background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+		}
+
+		#top_one {
+			position: absolute;
+			height: 140px;
+			width: 210px;
+			margin-top: 130px;
+			margin-left: 370px;
+			background-color: royalblue;
+			border-radius: 5%;
+			animation-name: move;
+			animation-duration: 6s;
+			animation-fill-mode: forwards;
+			/* 运行次数 */
+			/* animation-iteration-count: 2; */
+			/* animation: move 4s steps(10s) infinite; */
+			/* animation-iteration-count: infinite; */
+			/* 反方向
+			animation-direction: alternate; */
+			/* z-index: 40; */
+		}
+
+		#top_one img {
+			width: 100%;
+			height: 100%;
+			border-radius: 5%;
+		}
+
+		#top_two {
+			position: absolute;
+			height: 140px;
+			width: 210px;
+			margin-top: 280px;
+			margin-left: 600px;
+			background-color: royalblue;
+			border: 2px cadetblue solid;
+			border-radius: 5%;
+			animation-name: mytwo;
+			animation-duration: 6s;
+		}
+
+		@keyframes mytwo {
+			0% {
+				transform: rotate(0deg);
+			}
+
+			25% {
+				transform: rotate(90deg);
+			}
+
+			50% {
+				transform: rotate(180deg);
+			}
+
+			75% {
+				transform: rotate(270deg);
+			}
+
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+		#top_three {
+			height: 140px;
+			width: 210px;
+			background-color: royalblue;
+			margin-top: 450px;
+			margin-left: 850px;
+			position: relative;
+			border: 2px cadetblue solid;
+			border-radius: 5%;
+			animation-name: myfirst;
+			animation-delay: 6s;
+			animation-fill-mode: forwards;
+			animation-duration: 4s;
+			/* animation-iteration-count: 3; */
+		}
+
+		@keyframes myfirst {
+			0% {
+				transform: translateX(0px);
+			}
+
+			50% {
+				transform: translateX(-480px);
+			}
+
+			100% {
+				transform: translate(-480px, -320px);
+			}
+		}
+
+		#top_three img {
+			width: 100%;
+			height: 100%;
+			border-radius: 5%;
+		}
+
+		#top_three img:hover {
+			filter: alpha(Opacity=80);
+			-moz-opacity: 0.8;
+			opacity: 0.8
+		}
+
+		#top_two img {
+			width: 100%;
+			height: 100%;
+			border-radius: 5%;
+
+
+		}
+
+
+
+		#top_one:hover {
+			animation-play-state: paused;
+
+		}
+
+		@keyframes move {
+			0% {
+				transform: translateX(0px);
+			}
+
+			50% {
+				transform: translateX(480px);
+			}
+
+			100% {
+				transform: translate(480px, 320px);
+			}
+
+			/* 	75% {
+				transform: translate(0px, 320px);
+			}
+
+			100% {
+				transform: translate(0px, 0px);
+			} */
+
+
+		}
+
+		.center_photo img {
+			-webkit-filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, .5));
+			filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, .5));
+			border: 1px rebeccapurple solid;
+			border-radius: 5%;
+			cursor: pointer;
+			transition: all 1s;
+			position: relative;
+			margin-left: 35px;
+			margin-top: 20px;
+
+		}
+
+		.center_photo img:hover {
+			transform: scale(1.5);
+			z-index: 1;
+			filter: alpha(Opacity=80);
+			-moz-opacity: 0.8;
+			opacity: 0.8
+		}
+
+		h1 {
+			text-align: center;
+		}
+	</style>
+	<body>
+		<div id="head">
+			<h1>css照片墙</h1>
+			<div id="center">
+				<div class="center_photo">
+					<script type="text/javascript">
+						for (var x = 1; x <= 16; x++) {
+							if (x % 2 == 0) {
+								document.write("<img src='./img/image" + x + ".png'>");
+							} else {
+								document.write("<img src='./img/image" + x + ".png'>");
+							}
+						}
+					</script>
+				</div>
+			</div>
+			<div id="top_one">
+				<img src="./img/image17.png" alt="">
+			</div>
+			<div id="top_two">
+				<img src="./img/image15.png" alt="">
+			</div>
+			<div id="top_three">
+				<img src="img/image13.png" alt="">
+			</div>
+		</div>
+
+	</body>
+
+</html>
