@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>copy</title>
+<script>
+function copyText()
+{
+	document.getElementById("text2").value=document.getElementById("text1").value;
+}
+</script>
+</head>
+<body>
+ <input type="text" id="text1" value=" ">
+ <button onclick="copyText()">复制文本</button>
+ <br>
+ <input type="text" id="text2">
+</body>
+</html>
