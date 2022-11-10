@@ -95,7 +95,7 @@
 	</style>
 	<body>
 		<div id="head">
-			<h2>注册验证</h2>
+			<h2>注册表单</h2>
 			
 			<button onclick="document.getElementById('center').style.display='block'" style="width:auto;">注册</button>
 			
@@ -136,7 +136,7 @@
 			var username = document.getElementById("username");
 			var password = document.getElementById("password");
 			var password2 = document.getElementById("password2");
-			// var name_re=/^\S[0-9a-zA-Z]{6,8}/;
+			
 			var pwd_re=/^\S{6,20}$/;
 			
 			if(!pwd_re.test(password.value)){
