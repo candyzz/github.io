@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>介绍</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+				
+			}
+			body{
+				background-color:grey;
+			}
+			/* #top {
+				background-color: grey;
+				width: 100%;
+			   
+			} */
+			
+			.input_one input {
+				width: 200px;
+				border: 2px solid black;
+				border-radius: 5px;
+				height: 30px;
+			}
+			
+		
+			#head {
+				background-color:darkgray;
+				width: 40%;
+				border-radius: 3%;
+				height: 500px;
+				margin-left: 30%;
+				font-weight: 600;
+				font-size: 18px;
+				border: 3px solid dimgray;
+			}
+			
+			.cent {
+				margin-left: 20px;
+				font-size: 13px;
+			}
+			
+			.foot {
+				margin-left: 100px;
+			}
+			.input_three input{
+				width: 100px;
+				height: 40px;
+				margin: 30px 30px;
+				border-radius: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="top">
+			<div id="head">
+				<div>
+		<form action="" onsubmit="validateForm()" method="" name="myForm" id="myForm">
+						<label for="" class="input_one">
+							姓&emsp;名: <input type="text"  required> </label> <br>
+						<hr><label for="" class="input_one">
+							密&emsp;码: <input type="password" required ></label><br>
+							<hr>
+							性别:
+							<input type="radio" name="radio1" value="男">男
+							<input type="radio" name="radio1" value="女">女
+						</label><br>
+						<hr>
+						血型:<input type="radio" name="stu" value="O">O
+						<input type="radio" name="stu" value="B">B
+						<input type="radio" name="stu" value="A">A
+						<input type="radio" name="stu" value="AB">AB
+						<hr>
+						性格: <input type="checkbox" name="" id="" value="" />热情大方
+						<input type="checkbox" name="" id="" value="" />温柔体贴
+						<input type="checkbox" name="" id="" value="" />多情善感
+						<hr>
+						<label>
+							文件：
+							<input type="file" value="" id="word" >
+							<!-- <input type="text"  id="flies"> -->
+						</label><hr>
+						<label for="start">出生日期：</label>
+						<input type="date" min="2000-01-01" value="2000-01-01"> <br />
+						<hr>
+						<label>
+							爱好:
+							<div class="cent">
+								<input type="checkbox" value="旅游" name="hobby">旅游<br>
+								<input type="checkbox" value="登山" name="hobby">登山<br>
+								<input type="checkbox" value="健身" name="hobby">健身<br>
+								<input type="checkbox" value="上网" name="hobby">上网<br>
+								<input type="checkbox" value="游泳" name="hobby">游泳
+						</label><br>
+				</div>
+				<hr> 城市：<select name="" id="">
+
+					<option value="">---请选择---</option>
+					<option value="">北京</option>
+					<option value="">上海</option>
+					<option value="">成都</option>
+					<option value="">重庆</option>
+				</select>
+				<hr />		
+ <div class="input_three">
+ 	<p class="foot">
+ 		<input type="submit" value="提交" name="fname" id="check">
+ 		<input type="reset" value="重置" >
+ 	</p>
+ </div>
+				
+
+				</form>
+			</div>
+
+		</div>
+
+		</div>
+	</body>
+	<script>
+		function validateForm(){
+			
+			var x=document.forms["myForm"]["fname"].valve;
+			if(x==null){
+				alert("重新输入");
+			}
+			
+			}
+		
+	</script>
+</html>
