@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简易时钟</title>
+    <style>
+       * {
+         padding: 0;
+         margin: 0;
+		  }
+        
+       body {
+         height: 100vh;
+         background-color: darkgray; }
+        h1{
+			text-align: center;
+		}
+       .container {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         width: 960px;
+         height: 320px;
+         margin: 50px auto;
+		 /* background-color:linear-gradient(to right,#FF0000,#FFF200, #1E9600); */
+         background-color: #e5e3e8;
+		  }
+         .container .menu {
+           display: flex;
+           align-items: center;
+           width: 300px;
+           height: 85px; }
+           .container .menu div {
+             width: 100%;
+             text-align: center; }
+             .container .menu div span {
+               cursor: pointer; 
+			   font-size: 24px;
+			   font-weight: 600;
+			   font-family: 'Courier New', Courier, monospace;
+			   color: brown;
+			   }
+         .container .clock {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           width: 900px;
+           height: 150px;
+           /* background-color: pink; */
+          background-image: linear-gradient(to left, rgba(255,0,0,0), rgba(170, 170, 255, 1.0));
+
+		   border: 6px double gray;
+           box-shadow: 0 0 40px rgba(0, 0, 0, 0.6); }
+           .container .clock .clock-item {
+             position: relative;
+             display: flex;
+             flex-direction: column;
+             align-items: flex-end;
+             width: 60px;
+             margin: 0 30px; }
+             .container .clock .clock-item div {
+               font-size: 12px;
+               color: black; }
+             .container .clock .clock-item span {
+               font-size: 60px;
+               font-weight: 100;
+			   color: white;
+			   /* background-image:linear-gradient(45deg, #FF0000,#FFF200, #1E9600) ; */
+               letter-spacing: 5px; }
+            /* .container .clock .clock-item:not(:last-child)::after {
+               content: " ";
+               position: absolute;
+               top: 35%;
+               right: -22px;
+               font-size: 30px;
+               color: #fff; } */
+        
+       .toast {
+         position: absolute;
+         top: calc(50% - 25px);
+         left: calc(50% - 100px);
+         width: 200px;
+         height: 50px;
+         line-height: 50px;
+         text-align: center;
+         color: #fff;
+         background-color: rgba(0, 0, 0, 0.6);
+         opacity: 0;
+         pointer-events: none; }
+    </style>
+    
+</head>
+<body>
+<h1>电子时钟</h1>
+<div class="container">
+			<div class="menu">
+				<div class="running"><span>开启</span></div>
+				<div class="paused"><span>暂停</span></div>
+			</div>
+			<div class="clock">
+				<div class="clock-item year">
+					<div>年</div>
+					<span>00</span>
+				</div>
+				<div class="clock-item month">
+					<div>月</div>
+					<span>00</span>
+				</div>
+				<div class="clock-item day">
+					<div>日</div>
+					<span>00</span>
+				</div>
+				<div class="clock-item hour">
+					<div>时</div>
+					<span>00</span>
+				</div>
+				<div class="clock-item minute">
+					<div>分</div>
+					<span>00</span>
+				</div>
+				<div class="clock-item second">
+					<div>秒</div>
+					<span>00</span>
+				</div>
+			</div>
+		</div>
+		<div class="toast">我是提示框</div>
+
+
+</body>
+<script>
+       // 给js文件添加页面加载事件
+       window.addEventListener("load", () => {
+       	// 获取放置时间的元素
+		//年份
+		const year = document.querySelector(".year>span")
+       	const month = document.querySelector(".month>span")
+		const day = document.querySelector(".day>span")
+		// 小时
+       	const hour = document.querySelector(".hour>span");
+       	// 分钟
+       	const minute = document.querySelector(".minute>span");
+       	// 秒钟
+       	const second = document.querySelector(".second>span");
+        
+       	// 先获取两个元素
+       	// 开启
+       	const running = document.querySelector(".running>span");
+       	// 暂停
+       	const paused = document.querySelector(".paused>span");
+        
+       	// 获取提示框
+       	const toast = document.querySelector(".toast");
+        
+       	// 定义函数 更新时间
+       	const getTime = () => {
+       		// 获取当前的事件
+       		const nowTime = new Date();
+       		// 获取当前的小时
+			const years = nowTime.getFullYear();
+			year.innerHTML = years < 10 ? "0"+years:years;
+			const months = nowTime.getMonth()+1;
+			month.innerHTML = months < 10 ? "0"+months:months;
+			const days = nowTime.getDate();
+			day.innerHTML = days<10 ? "0"+days:days; 
+       		const hours = nowTime.getHours();
+       		// 更新页面的时间 所有都是小于 10 前面加个0 小时 分钟 秒钟 同理
+       		hour.innerHTML = hours < 10 ? "0" + hours : hours;
+       		// 获取当前的分钟
+       		const minutes = nowTime.getMinutes();
+       		minute.innerHTML = minutes < 10 ? "0" + minutes : minutes;
+       		// 获取当前的秒钟
+       		const seconds = nowTime.getSeconds();
+       		second.innerHTML = seconds < 10 ? "0" + seconds : seconds;
+       	};
+       	// 顺便调用一下
+       	getTime();
+        
+       	// 定义定时器 更新时间
+       	let timer = setInterval(() => {
+       		getTime();
+       	}, 1000);
+        
+       	// 定义一个变量 控制定时器 是否需要开启
+       	let flag = false;
+        
+       	// 外面定义一个值来保存opacity的值
+       	let opacity = 0;
+        
+       	// 定义一个函数来弹出提示框 因为我们需要在散出用到
+       	const showToast = () => {
+       		// 调出提示框 开启定时器 逐渐显示 提示框
+       		const toastTimer = setInterval(() => {
+       			opacity += 0.1;
+       			// 设置提示框的透明度
+       			toast.style.opacity = opacity;
+       			// ok 现在我们让提示框显示后1.5s后关闭
+       			// 在定义一个一次性定时器
+       			// 如果opacity>=1就是完全显示了 css opacity的值最大是1
+       			if (opacity >= 1) {
+       				setTimeout(() => {
+       					// 现将opacity重新赋值为0
+       					opacity = 0;
+       					// 清除定时器
+       					clearInterval(toastTimer);
+       					toast.style.opacity = 0;
+       				}, 1500);
+       			}
+       		}, 30);
+       	};
+        
+       // 现在做开启和暂停
+       	// 先做暂停
+       	paused.addEventListener("click", () => {
+       		// 调用提示框
+       		// 先写个内容
+       		toast.innerHTML = "时钟已暂停...";
+       		showToast();
+        
+       		// 点击暂停 清除定时器
+       		clearInterval(timer);
+       		// 暂停之后 就赋新值个给flag
+       		flag = true;
+       	});
+       	// OK 在做开启
+       	// 这个就是开启多个定时器 点击暂停就不知道找哪个了 我们定义一个变量来控制定时器是否需要开启
+       	running.addEventListener("click", () => {
+       		// 如果flag是true就开启 否则不开启
+       		if (flag) {
+       			// 开启提示框
+       			toast.innerHTML = "时钟已开启...";
+       			showToast();
+        
+       			// 点击开启重新开启一个定时器
+       			timer = setInterval(() => {
+       				getTime();
+       			}, 1000);
+       			// 当然这里开启之后就把值赋为false
+       			flag = false;
+       		} else {
+       			// 这里如果时钟已开启 就提示已经开启了
+       			toast.innerHTML = "时钟已经在开启状态...";
+       			showToast();
+       		}
+       	});
+       });
+        
+    </script>
+</html>
+
